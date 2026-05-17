@@ -1,0 +1,497 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  body {
+    @apply bg-background text-slate-200 font-sans antialiased m-0 p-0;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-slate-900/60 backdrop-blur-md border border-white/10 shadow-lg;
+  }
+
+  .glass-card {
+    @apply bg-slate-900/70 backdrop-blur-lg border border-white/10 shadow-xl rounded-3xl;
+  }
+
+  .glass-nav {
+    @apply bg-slate-950/80 backdrop-blur-xl border-t border-white/10 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.5)];
+  }
+
+  .glow-shadow {
+    box-shadow: 0 0 25px rgba(37, 99, 235, 0.25);
+  }
+
+  .glow-shadow-lg {
+    box-shadow: 0 0 40px rgba(37, 99, 235, 0.4);
+  }
+
+  .glow-shadow-cyan {
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.3);
+  }
+
+  .gradient-border {
+    position: relative;
+    background-clip: padding-box;
+    border: solid 2px transparent;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -2px;
+    border-radius: inherit;
+    background: linear-gradient(to right, #2563eb, #06b6d4);
+  }
+
+}
+
+/* Global scrollbar hiding utility */
+.no-scrollbar::-webkit-scrollbar,
+.no-scrollbar *::-webkit-scrollbar {
+  display: none !important;
+}
+
+.no-scrollbar,
+.no-scrollbar * {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+/* ==========================================================================
+   PREMIUM LIGHT MODE SYSTEM (THEME-LIGHT)
+   Encapsulated theme with vibrant aesthetics, gorgeous gradients & premium glassmorphism.
+   ========================================================================== */
+
+.theme-light {
+  /* Dynamic Tailwind CSS v4 Variable Mapping */
+  --color-primary: #2563eb !important;      /* Indigo 500 */
+  --color-secondary: #06b6d4 !important;    /* Cyan 500 */
+  --color-accent: #8b5cf6 !important;       /* Violet 500 */
+  --background: #f8fafc;                    /* Sleek, cool slate-50 background variable */
+  --color-background: #f8fafc !important;
+  
+  /* Dynamic transitions for a premium, responsive feel */
+  &, & *, & .glass-card, & .glass-panel, & .glass-nav, & input {
+    transition: background 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+                background-color 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+                border-color 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+                color 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
+                box-shadow 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  /* Vibrant Mesh Gradient Background Override */
+  &.bg-background, & .bg-background {
+    background: #f8fafc !important;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.12) 0px, transparent 60%),
+      radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.12) 0px, transparent 60%),
+      radial-gradient(at 50% 100%, rgba(168, 85, 247, 0.08) 0px, transparent 65%) !important;
+  }
+
+  /* Core Glassmorphic Typography Styles - High Legibility & Premium Colors */
+  h1, h2, h3, h4, h5, h6, .text-white {
+    color: #0f172a !important; /* Premium Dark Charcoal Slate 900 */
+    font-weight: 700;
+  }
+
+  p, span, .text-slate-200, .text-slate-300 {
+    color: #334155 !important; /* Deep slate 700 */
+  }
+
+  .text-slate-400, .text-slate-500 {
+    color: #64748b !important; /* Premium Slate 500 for captions */
+  }
+
+  /* Vibrant Accents */
+  .text-primary, .text-cyan-400, .text-indigo-400 {
+    color: #2563eb !important;
+  }
+  
+  .text-secondary, .text-cyan-500 {
+    color: #06b6d4 !important;
+  }
+
+  .text-orange-400 {
+    color: #ea580c !important;
+  }
+
+  .text-red-400 {
+    color: #dc2626 !important;
+  }
+
+  /* Crystal Clear Glassmorphic Cards with Premium Soft Elevation */
+  .glass-card, .glass-panel {
+    background-color: rgba(255, 255, 255, 0.76) !important;
+    border: 1px solid rgba(37, 99, 235, 0.08) !important;
+    box-shadow: 0 16px 35px -10px rgba(37, 99, 235, 0.08),
+                0 1px 3px rgba(37, 99, 235, 0.02),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+  }
+
+  /* Dynamic Active Hover Cards */
+  .glass-card:hover {
+    border-color: rgba(37, 99, 235, 0.2) !important;
+    box-shadow: 0 25px 45px -10px rgba(37, 99, 235, 0.14),
+                0 1px 4px rgba(37, 99, 235, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+  }
+
+  /* Translucent Glassmorphic Bottom Navigation Panel */
+  .glass-nav {
+    background-color: rgba(255, 255, 255, 0.76) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 15px 35px -10px rgba(37, 99, 235, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+  }
+
+  /* Active Indicator on Navigation */
+  .bg-primary\/20 {
+    background-color: rgba(37, 99, 235, 0.1) !important;
+    border: 1px solid rgba(37, 99, 235, 0.12) !important;
+  }
+
+  /* Slate background wrappers override (e.g. Home search, alerts, categories) */
+  .bg-slate-900, .bg-slate-950, .bg-slate-800, .bg-slate-900\/80, .bg-slate-950\/80, .bg-slate-800\/80 {
+    background-color: rgba(255, 255, 255, 0.72) !important;
+    border-color: rgba(37, 99, 235, 0.1) !important;
+  }
+
+  .border-white\/5, .border-white\/10, .border-slate-800, .border-slate-700 {
+    border-color: rgba(37, 99, 235, 0.08) !important;
+  }
+
+  /* Inner availability container, badges and status lists */
+  .bg-slate-950 {
+    background-color: rgba(241, 245, 249, 0.75) !important;
+    border-color: rgba(37, 99, 235, 0.08) !important;
+  }
+  
+  .bg-slate-900\/90 {
+    background-color: rgba(255, 255, 255, 0.85) !important;
+    border-color: rgba(37, 99, 235, 0.1) !important;
+  }
+
+  /* Custom Search bar inputs to ensure transparent background and crisp readable text */
+  .bg-slate-900 input, input.bg-transparent {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #0f172a !important;
+    backdrop-filter: none !important;
+    &::placeholder {
+      color: #64748b !important;
+    }
+  }
+
+  /* Standalone Inputs, Search Filters & Forms */
+  input:not(.bg-transparent) {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(37, 99, 235, 0.15) !important;
+    color: #0f172a !important;
+    backdrop-filter: blur(8px) !important;
+    &::placeholder {
+      color: #94a3b8 !important;
+    }
+    &:focus {
+      background-color: #ffffff !important;
+      border-color: #2563eb !important;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12) !important;
+    }
+  }
+
+  /* Pastel-Vibrant Alerts & Category Buttons */
+  .bg-white\/5, .bg-white\/10 {
+    background-color: rgba(37, 99, 235, 0.06) !important;
+    border-color: rgba(37, 99, 235, 0.1) !important;
+  }
+
+  /* Hover states for interactive blocks */
+  .hover\:bg-slate-800:hover, .hover\:bg-slate-700:hover {
+    background-color: rgba(37, 99, 235, 0.05) !important;
+  }
+
+  /* Premium Weekly Overview Bar Graph Columns */
+  .bg-slate-800.group-hover\:bg-slate-700 {
+    background-color: rgba(37, 99, 235, 0.08) !important;
+    border: 1px solid rgba(37, 99, 235, 0.06) !important;
+    &:hover {
+      background-color: rgba(37, 99, 235, 0.2) !important;
+    }
+  }
+
+  /* Sophisticated Midnight Navy & Steel Blue Gradient for Hero/Balance Cards in Light Mode */
+  .bg-slate-900.pt-16.pb-8, 
+  .bg-gradient-to-br.from-slate-900 {
+    background: linear-gradient(135deg, #0b132b 0%, #1c2541 50%, #3a506b 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 20px 45px -10px rgba(11, 19, 43, 0.22) !important;
+    
+    /* Perfect contrast white text nested inside colorful gradient cards */
+    &, & h1, & h2, & h3, & h4, & p, & span, & div, & .text-slate-400, & .text-cyan-200, & .text-slate-300, & .text-slate-500, & .text-white {
+      color: #ffffff !important;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    /* Sub-containers inside gradients */
+    .bg-white\/5 {
+      background-color: rgba(255, 255, 255, 0.15) !important;
+      border-color: rgba(255, 255, 255, 0.2) !important;
+    }
+
+    .bg-white\/10 {
+      background-color: rgba(255, 255, 255, 0.22) !important;
+      border-color: rgba(255, 255, 255, 0.3) !important;
+    }
+    
+    .text-slate-500 {
+      color: rgba(255, 255, 255, 0.6) !important;
+    }
+
+    /* Chevron link icon inside gradients */
+    .w-10.h-10.bg-white\/5 {
+      background-color: rgba(255, 255, 255, 0.2) !important;
+      border-color: rgba(255, 255, 255, 0.3) !important;
+    }
+  }
+
+  /* Beautiful gradient override for dark purple/indigo pages (e.g. confirmation, compliance cards) */
+  .bg-gradient-to-br.from-indigo-900 {
+    background: linear-gradient(135deg, #eef2ff 0%, #faf5ff 50%, #f0fdf4 100%) !important;
+    border-color: rgba(37, 99, 235, 0.1) !important;
+    box-shadow: 0 20px 45px -10px rgba(37, 99, 235, 0.08) !important;
+    
+    /* Perfect slate contrast texts */
+    &, & h1, & h2, & h3, & h4, & p, & span, & div, & .text-slate-400, & .text-slate-300, & .text-slate-200, & .text-white {
+      color: #0f172a !important;
+      text-shadow: none !important;
+    }
+
+    .text-cyan-400 {
+      color: #0891b2 !important;
+    }
+    
+    /* Confirmation Check icon container */
+    .w-24.h-24.bg-slate-900 {
+      background-color: rgba(255, 255, 255, 0.8) !important;
+      border-color: rgba(6, 182, 212, 0.25) !important;
+      box-shadow: 0 12px 30px -10px rgba(6, 182, 212, 0.2) !important;
+    }
+  }
+
+  /* Important Note Banner Overrides (e.g. details page alerts) */
+  .bg-indigo-950\/40 {
+    background-color: rgba(37, 99, 235, 0.08) !important;
+    border-color: rgba(37, 99, 235, 0.2) !important;
+    &, p, span, div, .text-indigo-200, .text-indigo-400 {
+      color: #4f46e5 !important;
+    }
+  }
+
+  /* Before you go Info-Banner in accepted shifts page */
+  .bg-primary\/10 {
+    background-color: rgba(37, 99, 235, 0.08) !important;
+    border-color: rgba(37, 99, 235, 0.2) !important;
+    &, p, span, div, h4, .text-indigo-200 {
+      color: #4f46e5 !important;
+    }
+  }
+
+  /* Secondary Action Buttons (e.g. Withdraw, Details) */
+  button.bg-slate-800 {
+    background-color: #f1f5f9 !important; /* Sleek Slate 100 */
+    color: #475569 !important;
+    border: 1px solid rgba(37, 99, 235, 0.08) !important;
+    &:hover {
+      background-color: #e2e8f0 !important; /* Slate 200 */
+      color: #1e293b !important;
+    }
+  }
+
+  button.bg-slate-900 {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    color: #2563eb !important;
+    border: 1px solid rgba(37, 99, 235, 0.15) !important;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.05) !important;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.95) !important;
+      color: #8b5cf6 !important;
+      box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.08) !important;
+    }
+  }
+
+  button.bg-primary {
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.3) !important;
+    &:hover {
+      background-color: #4f46e5 !important;
+      box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.45) !important;
+    }
+  }
+
+  /* Theme-Dependent Stats, Badges, Lists & Icons */
+  .bg-cyan-950\/50 {
+    background-color: rgba(6, 182, 212, 0.08) !important;
+    color: #0891b2 !important;
+    border: 1px solid rgba(6, 182, 212, 0.15) !important;
+  }
+
+  .bg-orange-950\/50 {
+    background-color: rgba(249, 115, 22, 0.08) !important;
+    color: #ea580c !important;
+    border: 1px solid rgba(249, 115, 22, 0.15) !important;
+  }
+
+  .bg-red-950\/50 {
+    background-color: rgba(239, 68, 68, 0.08) !important;
+    color: #dc2626 !important;
+    border: 1px solid rgba(239, 68, 68, 0.15) !important;
+  }
+
+  .bg-cyan-950 {
+    background-color: rgba(6, 182, 212, 0.08) !important;
+  }
+
+  /* Expiring and Missing status items in Compliance List */
+  .bg-orange-950\/20 {
+    background-color: rgba(249, 115, 22, 0.08) !important;
+    border-color: rgba(249, 115, 22, 0.15) !important;
+  }
+  .bg-orange-900\/50 {
+    background-color: rgba(249, 115, 22, 0.12) !important;
+    color: #ea580c !important;
+    border-color: rgba(249, 115, 22, 0.2) !important;
+  }
+
+  .bg-red-950\/20 {
+    background-color: rgba(239, 68, 68, 0.08) !important;
+    border-color: rgba(239, 68, 68, 0.15) !important;
+  }
+  .bg-red-900\/50 {
+    background-color: rgba(239, 68, 68, 0.12) !important;
+    color: #dc2626 !important;
+    border-color: rgba(239, 68, 68, 0.2) !important;
+  }
+
+  /* Unread vs Read Notification overrides */
+  .bg-slate-800\/80.border-primary\/30 {
+    background-color: rgba(236, 254, 255, 0.6) !important; /* Soft ice cyan tint */
+    border-color: rgba(6, 182, 212, 0.25) !important;
+  }
+
+  /* List Menu Icons in Profile Page */
+  .w-10.h-10.rounded-xl.bg-slate-800 {
+    background-color: rgba(37, 99, 235, 0.08) !important;
+    border: 1px solid rgba(37, 99, 235, 0.12) !important;
+    color: #2563eb !important;
+  }
+
+  /* Auth Screens and Splash Custom Styling */
+  .bg-white\/5.backdrop-blur-md {
+    background-color: rgba(255, 255, 255, 0.72) !important;
+    color: #0f172a !important;
+    border: 1px solid rgba(37, 99, 235, 0.15) !important;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.05) !important;
+  }
+
+  .bg-white\/5.backdrop-blur-xl {
+    background-color: rgba(255, 255, 255, 0.75) !important;
+    border: 1px solid rgba(37, 99, 235, 0.15) !important;
+    .text-white {
+      color: #2563eb !important;
+    }
+  }
+
+  /* Avatar status green ring */
+  .border-slate-900 {
+    border-color: #ffffff !important;
+  }
+
+  /* Inactive states & shadows overrides */
+  .text-slate-600 {
+    color: #94a3b8 !important;
+  }
+
+  .bg-slate-700 {
+    background-color: rgba(37, 99, 235, 0.1) !important;
+  }
+
+  /* Category pills custom hover / inactive overrides */
+  .bg-slate-900.text-slate-400.border.border-white\/10 {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border-color: rgba(37, 99, 235, 0.08) !important;
+    color: #64748b !important;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.95) !important;
+      color: #2563eb !important;
+      border-color: rgba(37, 99, 235, 0.15) !important;
+    }
+  }
+
+  /* Active category chip glow override */
+  .bg-primary.text-white.shadow-md {
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.35) !important;
+  }
+
+  /* Glowing shadows overrides */
+  .glow-shadow {
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.18), 
+                0 8px 10px -6px rgba(37, 99, 235, 0.18) !important;
+  }
+
+  .glow-shadow-lg {
+    box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.22) !important;
+  }
+
+  .glow-shadow-cyan {
+    box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.15) !important;
+  }
+
+  /* Auth Page Light Mode Overrides */
+  .auth-card {
+    background-color: rgba(255, 255, 255, 0.85) !important;
+    border: 1px solid rgba(37, 99, 235, 0.1) !important;
+    box-shadow: 0 20px 50px -15px rgba(37, 99, 235, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .auth-input {
+    background-color: #f1f5f9 !important;
+    border: 1px solid #e2e8f0 !important;
+    color: #0f172a !important;
+    &::placeholder {
+      color: #94a3b8 !important;
+    }
+    &:focus {
+      background-color: #ffffff !important;
+      border-color: #2563eb !important;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12) !important;
+    }
+  }
+
+  /* Social login buttons in light mode */
+  .auth-card .bg-slate-800 {
+    background-color: #f1f5f9 !important;
+    border-color: #e2e8f0 !important;
+    color: #1e293b !important;
+    &:hover {
+      background-color: #e2e8f0 !important;
+    }
+  }
+}
