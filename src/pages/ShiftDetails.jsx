@@ -22,7 +22,7 @@ const ShiftDetails = () => {
   return (
     <div className="flex-1 min-h-0 bg-background flex flex-col relative overflow-hidden text-slate-200">
       {/* Hero Image Section - Immersive Full-Bleed & Fully Vibrant */}
-      <div className="relative h-72 shrink-0 w-full overflow-hidden">
+      <div className="relative h-44 shrink-0 w-full overflow-hidden">
         <img 
           src={shift.image} 
           alt={shift.clinicName} 
@@ -41,7 +41,7 @@ const ShiftDetails = () => {
       </div>
 
       {/* Scrollable Bottom Sheet Details */}
-      <div className="flex-1 min-h-0 overflow-y-auto no-scrollbar pb-32 -mt-8 relative z-10 bg-background rounded-t-[2.5rem] pt-8 px-5 border-t border-white/5 shadow-[0_-15px_30px_rgba(0,0,0,0.3)]">
+      <div className="flex-1 min-h-0 overflow-y-auto no-scrollbar pb-32 -mt-12 relative z-10 bg-background rounded-t-[2.5rem] pt-8 px-5 border-t border-white/5 shadow-[0_-15px_30px_rgba(0,0,0,0.3)]">
         
         {/* Header Block inside bottom sheet */}
         <div className="flex justify-between items-start mb-6">
