@@ -5,12 +5,14 @@ import { motion } from 'framer-motion';
 import { mockUser, mockShifts } from '../data/mockData';
 import GlassCard from '../components/ui/GlassCard';
 import ShiftCard from '../components/ui/ShiftCard';
+import { useTheme } from '../context/ThemeContext';
 
 const categories = ['All', 'Dentist', 'Hygienist', 'Dental Nurse'];
 const SHIFTS_PER_PAGE = 4;
 
 const HomeDashboard = () => {
   const navigate = useNavigate();
+  const { theme } = useTheme();
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -146,58 +148,66 @@ const HomeDashboard = () => {
           </div>
         )}
       </div>
-
-      {/* Ultra-Innovative Theme-Adaptive Pagination Capsule */}
+      {/* Ultra-Innovative Continuous Progress Pagination Capsule */}
       {totalPages > 1 && (
         <div className="flex justify-center mt-6 mb-6">
-          <div className="flex items-center bg-white/75 dark:bg-slate-950/60 border border-slate-200/60 dark:border-white/10 p-1.5 rounded-[2rem] shadow-[0_10px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_15px_35px_-5px_rgba(0,0,0,0.8)] backdrop-blur-xl w-full max-w-[280px]">
+          <div className={`flex items-center justify-between p-1.5 rounded-full backdrop-blur-xl w-full max-w-[220px] transition-all duration-300 border ${
+            theme === 'light'
+              ? 'bg-white/90 border-slate-200/80 shadow-[0_10px_30px_rgba(0,0,0,0.06)]'
+              : 'bg-slate-950/60 border-white/10 shadow-[0_15px_35px_-5px_rgba(0,0,0,0.8)]'
+          }`}>
             {/* Prev Button */}
             <button
               onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className={`h-9 px-4 rounded-full flex items-center justify-center gap-1 text-[10px] font-black uppercase tracking-wider transition-all duration-300 border ${currentPage === 1
-                  ? 'bg-slate-100 dark:bg-slate-900/40 border-slate-200/20 dark:border-white/5 !text-slate-400 dark:!text-slate-600 cursor-not-allowed opacity-60'
-                  : 'bg-slate-100 dark:bg-white/5 border-slate-200/60 dark:border-white/10 !text-slate-700 dark:!text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10 active:scale-95 cursor-pointer'
-                }`}
+              className={`w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-300 shrink-0 ${
+                currentPage === 1
+                  ? theme === 'light'
+                    ? 'bg-slate-100/80 border-slate-200/50 !text-slate-300 cursor-not-allowed opacity-50'
+                    : 'bg-slate-900/30 border-white/5 !text-slate-700 cursor-not-allowed opacity-50'
+                  : theme === 'light'
+                    ? 'bg-slate-100 border-slate-200/60 !text-slate-700 hover:bg-slate-200 active:scale-90 cursor-pointer shadow-sm'
+                    : 'bg-white/5 border-white/10 !text-slate-300 hover:bg-white/10 active:scale-90 cursor-pointer shadow-sm'
+              }`}
             >
-              <ChevronLeft size={12} className="stroke-[3px]" />
-              Prev
+              <ChevronLeft size={16} className="stroke-[3px]" />
             </button>
-
+            
             {/* Elegant Floating Segment Center */}
-            <div className="flex-1 flex flex-col items-center justify-center select-none px-1">
-              <div className="text-[11px] font-black !text-slate-800 dark:!text-slate-200 uppercase tracking-widest mb-1.5">
-                Page <span className="!text-primary dark:!text-cyan-400 font-black">{currentPage}</span> / <span className="!text-slate-800 dark:!text-slate-200 font-black">{totalPages}</span>
-              </div>
-              {/* Dot Segments */}
-              <div className="flex gap-1.5">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                  <span
-                    key={page}
-                    className={`h-1 transition-all duration-300 rounded-full ${currentPage === page
-                        ? 'w-5 bg-gradient-to-r from-primary to-cyan-400 dark:to-cyan-400 shadow-[0_0_8px_rgba(99,102,241,0.5)]'
-                        : 'w-1 bg-slate-300 dark:bg-white/15'
-                      }`}
-                  />
-                ))}
+            <div className="flex flex-col items-center justify-center select-none px-2 shrink-0">
+              <span className={`text-[10px] font-black uppercase tracking-widest mb-1.5 ${
+                theme === 'light' ? 'text-slate-400' : 'text-slate-500'
+              }`}>
+                Page <span className={`font-black ${theme === 'light' ? '!text-slate-800' : '!text-slate-200'}`}>{currentPage}</span> <span className={theme === 'light' ? 'text-slate-300' : 'text-slate-700'}>/</span> <span className={`font-black ${theme === 'light' ? '!text-slate-800' : '!text-slate-200'}`}>{totalPages}</span>
+              </span>
+              {/* Continuous Progress Track */}
+              <div className={`w-14 h-1 rounded-full overflow-hidden ${
+                theme === 'light' ? 'bg-slate-200/60' : 'bg-white/10'
+              }`}>
+                <div 
+                  className="h-full bg-gradient-to-r from-primary to-cyan-400 rounded-full transition-all duration-300"
+                  style={{ width: `${(currentPage / totalPages) * 100}%` }}
+                />
               </div>
             </div>
-
+            
             {/* Next Button */}
             <button
               onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
               disabled={currentPage === totalPages}
-              className={`h-9 px-4 rounded-full flex items-center justify-center gap-1 text-[10px] font-black uppercase tracking-wider transition-all duration-300 border ${currentPage === totalPages
-                  ? 'bg-slate-100 dark:bg-slate-900/40 border-slate-200/20 dark:border-white/5 !text-slate-400 dark:!text-slate-600 cursor-not-allowed opacity-60'
-                  : 'bg-primary dark:bg-gradient-to-tr dark:from-primary dark:to-indigo-500 border-primary/20 !text-[#ffffff] hover:brightness-110 active:scale-95 cursor-pointer shadow-md dark:shadow-[0_0_15px_rgba(99,102,241,0.4)]'
-                }`}
+              className={`w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-300 shrink-0 ${
+                currentPage === totalPages
+                  ? theme === 'light'
+                    ? 'bg-slate-100/80 border-slate-200/50 !text-slate-300 cursor-not-allowed opacity-50'
+                    : 'bg-slate-900/30 border-white/5 !text-slate-700 cursor-not-allowed opacity-50'
+                  : 'bg-primary border-primary/20 !text-[#ffffff] hover:brightness-110 active:scale-90 cursor-pointer shadow-md'
+              }`}
             >
-              Next
-              <ChevronRight size={12} className="stroke-[3px]" />
+              <ChevronRight size={16} className="stroke-[3px]" />
             </button>
           </div>
         </div>
-      )}
+      )}}
     </div>
   );
 };
