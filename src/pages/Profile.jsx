@@ -20,7 +20,7 @@ const Profile = () => {
   ];
 
   return (
-    <div className="min-h-full pb-24 bg-background text-slate-200">
+    <div className="w-full pb-32 bg-background text-slate-200">
       {/* Profile Header (Uber-style) */}
       <div 
         className="bg-gradient-to-br from-slate-900 pt-4 pb-8 px-5 rounded-b-[2.5rem] relative overflow-hidden"
