@@ -15,7 +15,7 @@ const AuthScreen = () => {
   };
 
   return (
-    <div className="min-h-full bg-background relative overflow-hidden flex flex-col justify-center px-6 py-12">
+    <div className="min-h-full bg-background relative overflow-y-auto no-scrollbar flex flex-col px-6 pt-12 pb-12">
       {/* Decorative Blobs */}
       <div className="absolute top-[-15%] right-[-15%] w-72 h-72 bg-primary/20 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-[-10%] left-[-15%] w-64 h-64 bg-secondary/15 rounded-full blur-[100px] pointer-events-none" />
