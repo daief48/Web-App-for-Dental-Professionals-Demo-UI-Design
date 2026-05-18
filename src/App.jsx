@@ -12,7 +12,7 @@ import AuthScreen from './pages/AuthScreen';
 import HomeDashboard from './pages/HomeDashboard';
 import NearbyShifts from './pages/NearbyShifts';
 import ShiftDetails from './pages/ShiftDetails';
-import AcceptedShift from './pages/AcceptedShift';
+import AppliedShift from './pages/AppliedShift';
 import Earnings from './pages/Earnings';
 import Notifications from './pages/Notifications';
 import Compliance from './pages/Compliance';
@@ -35,7 +35,7 @@ const AnimatedRoutes = () => {
         <Route path="/home" element={<HomeDashboard />} />
         <Route path="/shifts" element={<NearbyShifts />} />
         <Route path="/shift/:id" element={<ShiftDetails />} />
-        <Route path="/accepted" element={<AcceptedShift />} />
+        <Route path="/applied" element={<AppliedShift />} />
         <Route path="/earnings" element={<Earnings />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/compliance" element={<Compliance />} />

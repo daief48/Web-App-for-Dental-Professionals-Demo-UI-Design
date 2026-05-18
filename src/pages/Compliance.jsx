@@ -38,7 +38,7 @@ const Compliance = () => {
             <ShieldCheck size={32} className="text-cyan-400" />
           </div>
           <h2 className="text-xl font-bold mb-2 text-white">85% Compliant</h2>
-          <p className="text-slate-300 text-sm mb-4">Complete your missing documents to accept all types of shifts.</p>
+          <p className="text-slate-300 text-sm mb-4">Complete your missing documents to apply for all types of shifts.</p>
           
           <div className="w-full bg-slate-800 rounded-full h-2.5 mb-2 overflow-hidden border border-white/5">
             <motion.div 

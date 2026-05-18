@@ -8,14 +8,14 @@ import GlassCard from '../components/ui/GlassCard';
 const ShiftDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [isAccepting, setIsAccepting] = useState(false);
+  const [isApplying, setIsApplying] = useState(false);
   
   const shift = mockShifts.find(s => s.id === id) || mockShifts[0];
 
-  const handleAccept = () => {
-    setIsAccepting(true);
+  const handleApply = () => {
+    setIsApplying(true);
     setTimeout(() => {
-      navigate('/accepted');
+      navigate('/applied');
     }, 1500);
   };
 
@@ -132,22 +132,22 @@ const ShiftDetails = () => {
         <motion.button 
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          onClick={handleAccept}
-          disabled={isAccepting}
+          onClick={handleApply}
+          disabled={isApplying}
           className={`w-full py-4 rounded-2xl font-bold shadow-lg transition-all flex items-center justify-center gap-2 border ${
-            isAccepting 
+            isApplying 
               ? 'bg-slate-800 text-slate-500 border-white/5' 
               : 'bg-primary text-white hover:bg-indigo-600 glow-shadow border-white/20'
           }`}
         >
-          {isAccepting ? (
+          {isApplying ? (
             <motion.div 
               animate={{ rotate: 360 }} 
               transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
               className="w-6 h-6 border-2 border-slate-600 border-t-primary rounded-full"
             />
           ) : (
-            'Accept Shift'
+            'Apply for Shift'
           )}
         </motion.button>
       </div>

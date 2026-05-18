@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight, MessageCircle, Phone, Mail, FileText, Extern
 import GlassCard from '../components/ui/GlassCard';
 
 const faqItems = [
-  { q: 'How do I accept a shift?', a: 'Browse available shifts on the Explore page, tap on a shift to see details, then click "Accept Shift" at the bottom. You\'ll receive a confirmation immediately.' },
+  { q: 'How do I apply for a shift?', a: 'Browse available shifts on the Explore page, tap on a shift to see details, then click "Apply for Shift" at the bottom. You will be notified once the clinic reviews and approves your application.' },
   { q: 'How do I get paid?', a: 'Payments are processed within 48 hours of completing a shift. You can track all your earnings on the Earnings page. Funds are sent directly to your linked bank account.' },
   { q: 'What happens if I cancel a shift?', a: 'You can cancel a shift up to 24 hours before the start time without penalty. Late cancellations may affect your reliability score.' },
   { q: 'How do I update my compliance documents?', a: 'Go to Profile → Compliance & Docs. Upload or update your GDC Certificate, DBS Check, and Indemnity Insurance documents from there.' },
